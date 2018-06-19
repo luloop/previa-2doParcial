@@ -5,14 +5,14 @@
 #include "Employee.h"
 
 /////////////////////////////
-int employee_compare(void* pEmployeeA,void* pEmployeeB)
+int employee_compare(void* empleadoA,void* empleadoB)
 {
     int retorno=0;
-    if (strcmp(((Employee*)pEmployeeA)->name,((Employee*)pEmployeeB)->name)==1)
+    if (strcmp(((Employee*)empleadoA)->name,((Employee*)empleadoB)->name)==1)
     {
       retorno=1;
     }
-        if (strcmp(((Employee*)pEmployeeA)->name,((Employee*)pEmployeeB)->name)==-1)
+        if (strcmp(((Employee*)empleadoA)->name,((Employee*)empleadoB)->name)==-1)
     {
       retorno=-1;
     }
@@ -20,11 +20,11 @@ int employee_compare(void* pEmployeeA,void* pEmployeeB)
     return retorno;
 }
 /////////////////////////
-int employee_compare2(void* pEmployeeA,void* pEmployeeB)
+int employee_compare2(void* empleadoA,void* empleadoB)
 {
     int retorno=0;
-    Employee* aux1= pEmployeeA;
-    Employee* aux2= pEmployeeB;
+    Employee* aux1= empleadoA;
+    Employee* aux2= empleadoB;
 
 
     if (strcmp(aux1->name,aux2->name))
@@ -90,20 +90,18 @@ Employee* employee_new(  len)
 
 }*/
 
-Employee* newEmployee(int id, char name[],char lastName[],float salary,int sector)
+Employee* employee_new(int id, char name[],char lastName[])
 {
     Employee* returnAux = NULL;
-    Employee* pEmployee = malloc(sizeof(Employee));
+    Employee* empleado = malloc(sizeof(Employee));
 
-    if(pEmployee != NULL)
+    if(empleado != NULL)
     {
-        pEmployee->id = id;
-        strcpy(pEmployee->name,name);
-        strcpy(pEmployee->lastName,lastName);
-        pEmployee->salary = salary;
-        pEmployee->sector = sector;
-        pEmployee->isEmpty = 0;
-        returnAux = pEmployee;
+        empleado->id = id;
+        strcpy(empleado->name,name);
+        strcpy(empleado->lastName,lastName);
+        empleado->isEmpty = 0;
+        returnAux = empleado;
     }
 
     return returnAux;
@@ -129,7 +127,7 @@ int employee_setId(Employee* this, int id)
     int aux = 0;
     if(this!=NULL)
     {
-        this->id = 0;
+        this->id = id;
         aux = 1;
     }
 
@@ -140,8 +138,13 @@ int employee_setId(Employee* this, int id)
 /////////////////////////
 int employee_getId(Employee* this)
 {
+    int aux=0;
+    if (this!=NULL)
+    {
+     aux=this->id;
+    }
 
-    return 0;
+    return aux;
 
 }
 

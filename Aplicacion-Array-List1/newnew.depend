@@ -28,3 +28,32 @@
 	<string.h>
 	"ArrayList.h"
 
+1529418925 source:c:\test\rizzi\previa-2doparcial\aplicacion-array-list1\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1529408767 c:\test\rizzi\previa-2doparcial\aplicacion-array-list1\arraylist.h
+
+1529410595 source:c:\test\rizzi\previa-2doparcial\aplicacion-array-list1\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ArrayList.h"
+	"Employee.h"
+
+1529417751 c:\test\rizzi\previa-2doparcial\aplicacion-array-list1\employee.h
+
+1529418303 source:c:\test\rizzi\previa-2doparcial\aplicacion-array-list1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1529418714 source:c:\test\rizzi\previa-2doparcial\aplicacion-array-list1\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+

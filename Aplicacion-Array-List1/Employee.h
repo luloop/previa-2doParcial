@@ -30,11 +30,14 @@ struct
 
 int employee_compare(void* pEmployeeA,void* pEmployeeB);
 void employee_print(Employee* this);
-Employee* employee_new(int);
 void employee_delete(Employee* this);
 int employee_setId(Employee* this, int id);
 int employee_getId(Employee* this);
 int employee_compare2(void* pEmployeeA,void* pEmployeeB);
+
+Employee* employee_new(int id, char name[],char lastName[]);
+
+
 #endif // _EMPLOYEE_H
 
 

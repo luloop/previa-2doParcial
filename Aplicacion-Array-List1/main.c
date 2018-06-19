@@ -76,9 +76,9 @@ int main()
             cleanScreen();
             break;
         case 2:
-            //cmuestro  elementos
-            printf("elementos: %d", listaEmpleados->size);
-            for (i=0; i<listaEmpleados->size; i++ )
+            //muestro  elementos
+            printf("elementos: %d", al_len(listaEmpleados));
+            for (i=0; i<al_len(listaEmpleados); i++ )
             {
                 //casteo a una estructura  COPIO LA DIRECCION DE MEMORIA DE LA INFO QUE QUIERO
                 aux=(Employee*)al_get(listaEmpleados,i);
@@ -100,7 +100,7 @@ int main()
             // system("pause");
             if(flagOrdenar==0)
             {
-                for (i=0; i<len; i++ )
+                for (i=0; i<al_len; i++ )
                 {
                     aux=(Employee*)al_get(listaEmpleados,i); //casteo a una estructura  COPIO LA DIRECCION DE MEMORIA DE LA INFO QUE QUIERO
                     printf("\n-%d-----%s, %s", aux->id, aux->lastName, aux->name);
@@ -126,7 +126,7 @@ int main()
 Employee* unEmpleado;
 
 
-            unEmpleado=(Employee*)employee_new();
+            unEmpleado=(Employee*)employee_new( 100, "Lucila", "Rizzi");
 
 
             //HACER SETEEERS DONDE PIDES LOS DATOS ACA

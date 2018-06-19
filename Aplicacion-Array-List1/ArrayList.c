@@ -76,11 +76,8 @@ int al_add(ArrayList* this, void* pElement)
     {
         if(this->size==this->reservedSize)
         {
-            if(expand(this,this->len )==0)//creo el nuevo espacio de memoria
+            if(resizeUp(this)==0)//creo el nuevo espacio de memoria
             {
-                *(this->pElements+this->size)=pElement;//si funciona lo ubico en el 2do puntero
-               this->size++;//aumento el size
-                returnAux=0;
             }
             else
             {
@@ -94,11 +91,7 @@ int al_add(ArrayList* this, void* pElement)
             this->size++;
             returnAux=0;
         }
-        else
-        {
-            *(this->pElements+this->size)=pElement;
-            returnAux=0;
-        }
+
 
     }
 
