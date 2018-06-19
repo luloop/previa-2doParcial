@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1529332755 source:c:\test\rizzi\18-06\array_list\practica_pair_v1.2\newnew\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1529321552 c:\test\rizzi\18-06\array_list\practica_pair_v1.2\newnew\arraylist.h
+
+1529321552 c:\test\rizzi\18-06\array_list\practica_pair_v1.2\newnew\employee.h
+
+1529322038 source:c:\test\rizzi\18-06\array_list\practica_pair_v1.2\newnew\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ArrayList.h"
+	"Employee.h"
+
+1529333652 source:c:\test\rizzi\18-06\array_list\practica_pair_v1.2\newnew\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1529328821 source:c:\test\rizzi\18-06\array_list\practica_pair_v1.2\newnew\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+

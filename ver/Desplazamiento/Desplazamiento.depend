@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1526309195 source:c:\test\rizzi\laboratorio1-2daparte-cursada\desplazamiento\main.c
+	<stdio.h>
+	<stdlib.h>
+
