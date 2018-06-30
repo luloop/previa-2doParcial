@@ -24,6 +24,8 @@ int main()
     Employee *aux;
     int flagParser=0;
 
+    Employee*filtro;
+
     int len=0;
     int i;
     int seguir=1;
@@ -63,7 +65,7 @@ int main()
         switch(opcion)
         {
         case 1:
-            //COPI DE ARCHIVO- paso el puntero a empleado y puntero arraylist
+                        //COPI DE ARCHIVO- paso el puntero a empleado y puntero arraylist
             flagParser=parserEmployee(f_empleados, listaEmpleados);
             if (flagParser==0)
             {
@@ -76,7 +78,7 @@ int main()
             cleanScreen();
             break;
         case 2:
-            //muestro  elementos
+                    //muestro  elementos
             printf("elementos: %d", al_len(listaEmpleados));
             for (i=0; i<al_len(listaEmpleados); i++ )
             {
@@ -123,9 +125,7 @@ int main()
 
             printf("%d", al_len(listaEmpleados));
 
-Employee* unEmpleado;
-
-
+            Employee* unEmpleado;
             unEmpleado=(Employee*)employee_new( 100, "Lucila", "Rizzi");
 
 
@@ -147,6 +147,25 @@ Employee* unEmpleado;
             cleanScreen();
             break;
         case 6:
+
+           filtro=al_newArrayList();
+            filtro=al_filter(listaEmpleados,employee_filterId100);
+
+            for (i=0; i<al_len(filtro); i++ )
+            {
+                //casteo a una estructura  COPIO LA DIRECCION DE MEMORIA DE LA INFO QUE QUIERO
+                aux=(Employee*)al_get(filtro,i);
+                printf("\n-%d-----%s, %s", aux->id, aux->lastName, aux->name);
+                if (i%100==0)// CONVERTIR ESTO EN FUNCION
+                {
+                    printf("\n\n");
+                    system("pause");
+                }
+            }
+
+
+
+
             cleanScreen();
             break;
         case 7:

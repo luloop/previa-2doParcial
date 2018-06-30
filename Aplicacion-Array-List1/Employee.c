@@ -149,3 +149,15 @@ int employee_getId(Employee* this)
 }
 
 
+int employee_filterId100(void* item)
+{
+    int retorno=0;
+    Employee*aux= item;
+    if (aux->id >= 100)
+    {
+      retorno=1;
+    }
+
+    return retorno;
+}
+

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1530381062 source:c:\users\lucil\desktop\2doparcial\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1530318668 c:\users\lucil\desktop\2doparcial\arraylist.h
+

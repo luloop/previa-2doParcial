@@ -562,6 +562,52 @@ int al_sort(ArrayList* this, int (*pFunc)(void*,void*), int order)
 return returnAux;
 }
 
+/** \brief FILTRAR objects of list, use compare pFunc
+ * \param pList ArrayList* Pointer to arrayList
+ * \param pFunc (*pFunc) Pointer to fuction to compare elements of arrayList
+ * \param order int  [1] indicate UP - [0] indicate DOWN
+ * \return int Return (-1) if Error [pList or pFunc are NULL pointer]
+ *                  - (0) if ok
+ */
+ArrayList* al_filter(ArrayList* this, int (*pFunc)(void*))
+{
+    int i;
+    int size=0;
+    int* auxiliar;
+
+    ArrayList*lista;
+    int contador=0;
+
+    if(this!=NULL&& pFunc!=NULL)
+    {
+        lista=al_newArrayList();
+        auxiliar=(void*)malloc(sizeof(int));
+        if (auxiliar !=NULL && lista!=NULL)
+        {
+            for (i=0; i<(this->len(this)); i++)
+            {
+                if(pFunc(*(this->pElements+i)))
+                {
+                    auxiliar=al_get(this, i);
+                    size++;
+                    if (resizeUp(lista)==-1)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                       al_add(lista, auxiliar);
+                    }
+                }
+
+            }
+
+        } //for j
+    }
+
+return lista;
+}
+
 
 /** \brief Increment the number of elements in pList in AL_INCREMENT elements.
  * \param pList ArrayList* Pointer to arrayList

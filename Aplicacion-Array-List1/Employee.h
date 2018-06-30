@@ -37,6 +37,8 @@ int employee_compare2(void* pEmployeeA,void* pEmployeeB);
 
 Employee* employee_new(int id, char name[],char lastName[]);
 
+int employee_filterId100(void* item);
+
 
 #endif // _EMPLOYEE_H
 

@@ -57,3 +57,32 @@
 	"ArrayList.h"
 	"Employee.h"
 
+1530356880 source:c:\users\lucil\desktop\previa-2doparcial\aplicacion-array-list1\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1530318668 c:\users\lucil\desktop\previa-2doparcial\aplicacion-array-list1\arraylist.h
+
+1530357355 source:c:\users\lucil\desktop\previa-2doparcial\aplicacion-array-list1\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ArrayList.h"
+	"Employee.h"
+
+1530318737 c:\users\lucil\desktop\previa-2doparcial\aplicacion-array-list1\employee.h
+
+1530356727 source:c:\users\lucil\desktop\previa-2doparcial\aplicacion-array-list1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1530308229 source:c:\users\lucil\desktop\previa-2doparcial\aplicacion-array-list1\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
