@@ -8,27 +8,30 @@
 #include "lib.h"
 
 
-int parserCSV(FILE* pFile, ArrayList* pArrayListEmployee, char nombre[])
+int parserCSV(ArrayList* pArrayListEmployee, char nombre[])
 {
     Employee *auxEmpleado;
+
+    FILE* pFile;
 
     char auxName[50];
     char auxLast[50];
     char auxId[50];
     char isEmpty[50];
     char charCantidad[50];
-    int cantidad;
+    int cantidad=0;
 
-    pFile=fopen("data.csv","r");
-    if(pFile== NULL && pArrayListEmployee==NULL && strlen(nombre)==0)
+    pFile=fopen(nombre,"r");
+    if(pFile== NULL || pArrayListEmployee==NULL || strlen(nombre)==0)
     {
-        return 1;
+        return -1;
     }
     else
     {
 // LEO y salteo el primero leyendolo pero sin hacer nada
 // fscanf(pFile,"%[^,],", charCantidad);
 // cantidad=atoi(charCantidad);//A ARRALYST ->SIZE??
+
     fscanf(pFile,"%[^,], %[^,], %[^,], %[^\n]\n", auxId, auxName, auxLast, isEmpty);
         while(!(feof(pFile)))
         {
@@ -42,12 +45,22 @@ int parserCSV(FILE* pFile, ArrayList* pArrayListEmployee, char nombre[])
 
                 //copio del auxiliar suelto al e estructura
                 auxEmpleado->id=atoi(auxId);
+                if(strcmp(isEmpty,"true"))
+                {
+                   strcpy(auxEmpleado->dni, "0");
+                }
+                else
+                {
+                   strcpy(auxEmpleado->dni, "1");
+                }
+
                 strcpy(auxEmpleado->lastName, auxLast);
                 strcpy(auxEmpleado->name,auxName);
 
                 //agrego al array list AL FINAL
 
-                al_add(pArrayListEmployee,auxEmpleado); // AGREGO EL EMPLEADO
+                al_add(pArrayListEmployee,auxEmpleado);
+                cantidad++; // AGREGO EL EMPLEADO
 
             }
 //muestro
@@ -62,7 +75,7 @@ int parserCSV(FILE* pFile, ArrayList* pArrayListEmployee, char nombre[])
 
 
 
-    return 0;
+    return cantidad;
 }
 
 
@@ -78,10 +91,13 @@ int parserCSV(FILE* pFile, ArrayList* pArrayListEmployee, char nombre[])
  * \param PUNTERO A FILE
  * \return  respuesta si es 1 no se genero el arhcivo correctamentem, si es cero todo OK
  */
-int guardarEnArchivo(ArrayList *this, int cantidad, FILE *archivo, char nombre[])
+int  archivos_guardarTexto(ArrayList *this, char nombre[])
 {
+    FILE *archivo;
+    int cantidad=-1;
     int i=0;
     Employee*aux;
+    ///////////////////////////
     archivo=fopen(nombre,"w");
     if(archivo==NULL)
     {
@@ -89,11 +105,12 @@ int guardarEnArchivo(ArrayList *this, int cantidad, FILE *archivo, char nombre[]
     }
     else
     {
-        fprintf(archivo,"ID,NOMBRE,APELLIDO,VACIO, %d\n",i);
+        cantidad=this->len(this);
+        fprintf(archivo,"ID,NOMBRE,APELLIDO,DNI, %d\n",i);
     while(i!=cantidad)
        {
        aux=(Employee*) this->get(this,i);
-       fprintf(archivo,"%d,%s,%s\n",persona_getId(aux),persona_getNombre(aux),persona_getApellido(aux),2);
+       fprintf(archivo,"%d,%s,%s,%s\n",persona_getId(aux),persona_getNombre(aux),persona_getApellido(aux),persona_getDni(aux));
        i++;
        }
         printf("\n-------------------------------\n");
@@ -112,25 +129,27 @@ int guardarEnArchivo(ArrayList *this, int cantidad, FILE *archivo, char nombre[]
  * \param
  * \return
  *
- *//*
-int archivos_guardar(ArrayList* pArray)
+ */
+int archivos_guardarBinario(ArrayList* pArray, char nombreArchivo[])
 {
    int i;
    int retorno=-1;
-   FILE* fArchivo=fopen("datos.bin","wb");
+   FILE* fArchivo=fopen("datos22.bin","wb");
    void* pSocio=NULL;
-   if(fArchivo!=NULL && pSocio!=NULL)
+
+   if(fArchivo!=NULL && pArray!=NULL)
    {
+
        for(i=0;i<al_len(pArray);i++)
        {
            pSocio=al_get(pArray,i);
-           fwrite(pSocio,sizeof(Socio),1,Socios);
-           retorno=0;
+           fwrite(pSocio,sizeof(Employee),1,fArchivo);
+           retorno++;
        }
 
    }
    fclose(fArchivo);
-   return retorno;
+   return (retorno+1);
 }
 
 /** \brief
@@ -139,33 +158,28 @@ int archivos_guardar(ArrayList* pArray)
 * \param
 * \return
 *
-*//*
+*/
 int archivos_leer(ArrayList* pArray)
 {
    int retorno=-1;
-   Socio auxSocio;
+   Employee *auxSocio;
    int maxId=0;
-   Socio* pSocio=NULL;
-   FILE* Socios=fopen("datos.bin","rb");
+   int i=0;
+   FILE* Socios=fopen("datos22.bin","rb");
 
-   if(Socios!=NULL && Socios!=NULL))
+   if(Socios!=NULL && pArray!=NULL )
    {
+       retorno=0;
        do{
-           if(fread(&auxSocio,sizeof(Socio),1,Socios)==1)
+           auxSocio=persona_newUnaPersona();
+           if(fread(auxSocio,sizeof(Employee),1,Socios))
            {
-               pSocio=soc_new(auxSocio.nombre,auxSocio.apellido,auxSocio.dni,auxSocio.id,auxSocio.estado); //VEEER no va a funcionar
-               al_add(pArray,pSocio);
+               al_add(pArray,auxSocio);
+               retorno++;
 
-               /////////////////
-               if(auxSocio.id>maxId)
-               {
-                   maxId=auxSocio.id;
-               }
-               retorno=maxId;
-               //////////////////
            }
        }while(!feof(Socios));
        fclose(Socios);
    }
    return retorno;
-}*/
+}

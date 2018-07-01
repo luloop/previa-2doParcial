@@ -13,34 +13,44 @@
  */
 void cleanScreen (void)
 {
-            printf("\n");
-            system ("pause");
-            system ("cls");
+    printf("\n");
+    system ("pause");
+    system ("cls");
 }
 
 
- /** \brief Pregunta S o N
- * *
- * \param texto de la pregunta
- * \return respuesta
- *
- */
- char preguntarSiNo ( char texto [])
- {
-     char respuesta;
+/** \brief Pregunta S o N
+* *
+* \param texto de la pregunta
+* \return respuesta
+*
+*/
+int preguntarSiNo ( char texto [])
+{
+    char respuestachar;
+    int respuesta;
 
-     printf("%s S o N:", texto);
-     fflush(stdin);
-     respuesta= tolower(getche());
+    printf("%s S o N:", texto);
+    fflush(stdin);
+    scanf("%c", &respuestachar);
 
-    while (respuesta != 's' && respuesta !='n')
-        {
-        printf(" \nRespuesta Incorrecta-%s\t",texto);
+    while (respuestachar != 's' && respuestachar !='n')
+    {
         fflush(stdin);
-        respuesta= tolower(getche());
-        }
+        printf(" \nRespuesta Incorrecta-%s\t",texto);
+        scanf("%c", &respuestachar);
+    }
+    switch (respuestachar)
+    {
+       case 's':
+            respuesta=1;
+            break;
+        case 'n':
+            respuesta=0;
+            break;
+    }
 
-  return respuesta;
+return respuesta;
 }
 
 /** \brief devolver numero random float //////////arreglar!!!!!!!
@@ -62,29 +72,52 @@ float devolverPuntaje()
 ////////////////////////////////////////
 
 
-/** \brief VALIDACION DE LA CARGA DE TITULO
+/** \brief INGRESA CUALQUIER TEXTO
  *
- * \param ARRAY ESTRUCTURA EMOVIE
+ * \param ARRAY DE CHAR
  * \param TAMANIO DEL ARRAY
- * \param CANTIDAD DE LETRAS QUE TENDRA EL TEXTO
+ * \param PREGUNTA
  * \return
  *
  */
- void ingresarTexto (char texto[], int cantTexto, char pregunta[])
+void ingresarTexto (char texto[], int cantTexto, char pregunta[])
 {
     char titulo [50];
     char auxtitulo [cantTexto-1];
     int i;
 
-    printf("\n \n%s\t", pregunta);
+    printf("%s\t", pregunta);
     fflush(stdin);
     gets (titulo);
-        for (i=0; i<cantTexto; i++)
-        {
-
-            auxtitulo[i]=titulo[i];
-        }
+    for (i=0; i<cantTexto; i++)
+    {
+        auxtitulo[i]=titulo[i];
+    }
     strcpy(texto, auxtitulo);
+}
+/** \brief INGRESA CUALQUIER NUMERO
+ *
+ * \param ARRAY DE CHAR
+ * \param TAMANIO DEL ARRAY
+ * \param PREGUNTA
+ * \return
+ *
+ */
+int ingresarInt (char pregunta[], int minimo,int maximo)
+{
+    int numero;
+
+    printf("%s\t", pregunta);
+    fflush(stdin);
+    scanf("%d", &numero);
+
+    while(numero>maximo|| numero<minimo|| isalpha(numero))
+    {
+        fflush(stdin);
+        printf("\nReingrese %s\t", pregunta);
+        scanf("%d", &numero);
+    }
+    return numero;
 }
 
 /** \brief FUCNION PARA ELEGIR EL GENERO
@@ -252,8 +285,8 @@ void pedirLink(EMovie pelicula [], int j, int lenLink)
   *
   */
 
-  int validaArrayList (Employee*this)
-  {
+int validaArrayList (Employee*this)
+{
     if (this==NULL)
     {
         printf("\n NO hay memoria disponible                \n");
@@ -261,9 +294,9 @@ void pedirLink(EMovie pelicula [], int j, int lenLink)
     }
     else
     {
-    return 1;
+        return 1;
     }
 
-  }
+}
 
 

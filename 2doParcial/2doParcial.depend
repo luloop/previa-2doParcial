@@ -15,7 +15,7 @@
 
 1530318668 c:\users\lucil\desktop\previa-2doparcial\2doparcial\arraylist.h
 
-1530420224 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\formatos.c
+1530474355 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\formatos.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -24,13 +24,13 @@
 	"archivos.h"
 	"lib.h"
 
-1530411524 c:\users\lucil\desktop\previa-2doparcial\2doparcial\personas.h
+1530464969 c:\users\lucil\desktop\previa-2doparcial\2doparcial\personas.h
 
-1530414009 c:\users\lucil\desktop\previa-2doparcial\2doparcial\archivos.h
+1530464038 c:\users\lucil\desktop\previa-2doparcial\2doparcial\archivos.h
 
-1530402185 c:\users\lucil\desktop\previa-2doparcial\2doparcial\lib.h
+1530425598 c:\users\lucil\desktop\previa-2doparcial\2doparcial\lib.h
 
-1530420781 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\archivos.c
+1530472599 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\archivos.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -41,7 +41,7 @@
 
 1530401987 c:\users\lucil\desktop\previa-2doparcial\2doparcial\formatos.h
 
-1530421160 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\lib.c
+1530463314 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\lib.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -50,13 +50,13 @@
 	"archivos.h"
 	"lib.h"
 
-1530417680 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\personas.c
+1530472458 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\personas.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"personas.h"
 
-1530416044 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\main.c
+1530473907 source:c:\users\lucil\desktop\previa-2doparcial\2doparcial\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

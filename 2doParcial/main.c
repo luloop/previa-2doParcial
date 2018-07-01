@@ -4,11 +4,10 @@
 #include "ArrayList.h"
 #include "formatos.h"
 #include "personas.h"
-#define TEXTO_ABM
+
 
 int main()
 {
-    FILE*pArchivo;
     Employee *listaPersonas;
     Employee *personas;
 
@@ -23,25 +22,14 @@ int main()
 
     listaPersonas=al_newArrayList();//llamo al constructor
     if (validaArrayList(listaPersonas)==0)
-        {
-            return 0;
-        }
-
+    {
+        return 0;
+    }
     do
     {
-     seguir= formato_ABM_Archivo(listaPersonas, pArchivo,"data.csv");
-
-    }while (seguir!=0);
-
-
-
-
-
-
-
-
-
-
-
+        seguir= formato_ABM_Archivo(listaPersonas);
+    }
+    while (seguir!=0);
+    return 0;
 
 }

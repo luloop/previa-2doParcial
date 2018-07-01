@@ -19,9 +19,19 @@ int personas_compareSalario(void* pEmployeeA,void* pEmployeeB)
 
 }
 
-void printPersona(Employee* p)
+int persona_compareName(void* pEmployeeA,void* pEmployeeB)
 {
-    printf("Nombre:%s Salario:%.2f\r\n",p->name,p->salary);
+    int retorno=0;
+    if (strcmp(((Employee*)pEmployeeA)->name,((Employee*)pEmployeeB)->name)==1)
+    {
+      retorno=1;
+    }
+        if (strcmp(((Employee*)pEmployeeA)->name,((Employee*)pEmployeeB)->name)==-1)
+    {
+      retorno=-1;
+    }
+
+    return retorno;
 }
 
 /** \brief Set this employee the values recived as parameters
@@ -35,7 +45,33 @@ void printPersona(Employee* p)
  * \return int Return (-1) if Error [NULL pointer] - (0) if Ok
  *
  */
-Employee* persona_newPersona(int id, char name[],char lastName[],float salary,int sector)
+Employee* persona_newUnaPersona()
+{
+    Employee* returnAux = NULL;
+    Employee* pEmployee = malloc(sizeof(Employee));
+
+    if(pEmployee != NULL)
+    {
+       returnAux = pEmployee;
+    }
+
+    return returnAux;
+
+}
+
+
+/** \brief Set this employee the values recived as parameters
+ *
+ * \param pEmployee employee*
+ * \param id int
+ * \param name[] char
+ * \param lastName[] char
+ * \param salary float
+ * \param sector int
+ * \return int Return (-1) if Error [NULL pointer] - (0) if Ok
+ *
+ */
+Employee* persona_newPersona(int id, char name[],char lastName[],int salary,int sector, char dni[])
 {
     Employee* returnAux = NULL;
     Employee* pEmployee = malloc(sizeof(Employee));
@@ -46,6 +82,8 @@ Employee* persona_newPersona(int id, char name[],char lastName[],float salary,in
         strcpy(pEmployee->name,name);
         strcpy(pEmployee->lastName,lastName);
         pEmployee->salary = salary;
+        pEmployee->legajo = salary;
+        strcpy(pEmployee->dni ,dni);
         pEmployee->sector = sector;
         pEmployee->isEmpty = 0;
         returnAux = pEmployee;
@@ -54,8 +92,13 @@ Employee* persona_newPersona(int id, char name[],char lastName[],float salary,in
     return returnAux;
 
 }
-
-
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 int persona_setNombre(Employee* this,char* nombre)
 {
     strcpy(this->name,nombre);
@@ -117,5 +160,10 @@ int persona_getEstado(Employee* this)
     return this->status;
 }
 
+
+void persona_printPersona(Employee*this)
+{
+    printf("ID %d\tNombre:%s, %s\tlegajo:%d \n",persona_getId(this), persona_getNombre(this), persona_getApellido(this), this->legajo);
+}
 
 

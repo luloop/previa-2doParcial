@@ -33,8 +33,7 @@ struct
 }typedef Employee;
 #endif // __EMPLOYEE
 
-int compareEmployee(void* pEmployeeA,void* pEmployeeB);
-void printEmployee(Employee* p);
+void persona_printPersona(Employee* p);
 Employee* newEmployee(int id, char name[],char lastName[],float salary,int sector);
-
+int persona_compareName(void* pEmployeeA,void* pEmployeeB);
 

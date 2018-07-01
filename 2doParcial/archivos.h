@@ -1,3 +1,1 @@
-
-int parserEmployee(FILE* pFile , ArrayList* pArrayListEmployee);
-int guardarEnArchivo(Employee *empleados, int cantidad, FILE *archivo, char nombre[]);
+#define ARCHIVO_BINARIO "data.bin"

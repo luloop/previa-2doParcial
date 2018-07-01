@@ -13,7 +13,7 @@ void cleanScreen (void);
  * \return respuesta
  *
  */
- char preguntarSiNo ( char texto []);
+int preguntarSiNo ( char texto []);
 
  /** \brief devolver numero random float //////////arreglar!!!!!!!
  * \param
