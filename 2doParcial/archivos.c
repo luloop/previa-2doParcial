@@ -78,9 +78,10 @@ int parserCSV(FILE* pFile, ArrayList* pArrayListEmployee, char nombre[])
  * \param PUNTERO A FILE
  * \return  respuesta si es 1 no se genero el arhcivo correctamentem, si es cero todo OK
  */
-int guardarEnArchivo(Employee *empleados, int cantidad, FILE *archivo, char nombre[])
+int guardarEnArchivo(ArrayList *this, int cantidad, FILE *archivo, char nombre[])
 {
     int i=0;
+    Employee*aux;
     archivo=fopen(nombre,"w");
     if(archivo==NULL)
     {
@@ -90,9 +91,9 @@ int guardarEnArchivo(Employee *empleados, int cantidad, FILE *archivo, char nomb
     {
         fprintf(archivo,"ID,NOMBRE,APELLIDO,VACIO, %d\n",i);
     while(i!=cantidad)
-        {
-        //GETS
-       fprintf(archivo,"11111\n");//, (empleados+i)->id,(empleados+i)->name,(empleados+i)->lastName);
+       {
+       aux=(Employee*) this->get(this,i);
+       fprintf(archivo,"%d,%s,%s\n",persona_getId(aux),persona_getNombre(aux),persona_getApellido(aux),2);
        i++;
        }
         printf("\n-------------------------------\n");
@@ -118,7 +119,7 @@ int archivos_guardar(ArrayList* pArray)
    int retorno=-1;
    FILE* fArchivo=fopen("datos.bin","wb");
    void* pSocio=NULL;
-   if(fArchivo!=NULL && Socios!=NULL)
+   if(fArchivo!=NULL && pSocio!=NULL)
    {
        for(i=0;i<al_len(pArray);i++)
        {
@@ -128,7 +129,7 @@ int archivos_guardar(ArrayList* pArray)
        }
 
    }
-   fclose(Socios);
+   fclose(fArchivo);
    return retorno;
 }
 

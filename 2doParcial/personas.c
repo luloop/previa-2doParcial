@@ -19,7 +19,7 @@ int personas_compareSalario(void* pEmployeeA,void* pEmployeeB)
 
 }
 
-void printEmployee(Employee* p)
+void printPersona(Employee* p)
 {
     printf("Nombre:%s Salario:%.2f\r\n",p->name,p->salary);
 }
@@ -35,7 +35,7 @@ void printEmployee(Employee* p)
  * \return int Return (-1) if Error [NULL pointer] - (0) if Ok
  *
  */
-Employee* newEmployee(int id, char name[],char lastName[],float salary,int sector)
+Employee* persona_newPersona(int id, char name[],char lastName[],float salary,int sector)
 {
     Employee* returnAux = NULL;
     Employee* pEmployee = malloc(sizeof(Employee));
@@ -55,6 +55,67 @@ Employee* newEmployee(int id, char name[],char lastName[],float salary,int secto
 
 }
 
+
+int persona_setNombre(Employee* this,char* nombre)
+{
+    strcpy(this->name,nombre);
+    return 0;
+}
+
+
+char* persona_getNombre(Employee* this)
+{
+    return this->name;
+}
+
+
+int persona_setApellido(Employee* this,char* apellido)
+{
+    strcpy(this->lastName,apellido);
+    return 0;
+}
+
+
+char* persona_getApellido(Employee* this)
+{
+    return this->lastName;
+}
+
+
+int persona_setDni(Employee* this,char* dni)
+{
+    strcpy(this->dni,dni);
+    return 0;
+}
+
+
+char* persona_getDni(Employee* this)
+{
+    return this->dni;
+}
+
+
+int persona_setId(Employee* this,int id)
+{
+    this->id = id;
+    return 0;
+}
+
+int persona_getId(Employee* this)
+{
+    return this->id;
+}
+
+int persona_setEstado(Employee* this,int estado)
+{
+    this->status = estado;
+    return 0;
+}
+
+int persona_getEstado(Employee* this)
+{
+    return this->status;
+}
 
 
 

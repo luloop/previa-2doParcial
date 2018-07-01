@@ -7,7 +7,7 @@
 #include "archivos.h"
 #include "lib.h"
 
-int  formato_ABM_Archivo(ArrayList this, FILE *parchivo, char textoABM[])
+int  formato_ABM_Archivo(ArrayList *this, FILE *parchivo, char textoABM[])
 {
     int i;
     int opcion;
@@ -16,7 +16,8 @@ int  formato_ABM_Archivo(ArrayList this, FILE *parchivo, char textoABM[])
     int flagArchivo=0;
     int auxArchivo;
     char nombreArchivo [20];
-    Employee*personas;
+    Employee aux;
+
 
     do
     {
@@ -25,6 +26,15 @@ int  formato_ABM_Archivo(ArrayList this, FILE *parchivo, char textoABM[])
         switch (opcion)
         {
         case 1:
+            ingresarTexto(aux.name, 20, "\nNombre:");
+            ingresarTexto(aux.lastName, 20, "\nApellido:");
+            ingresarTexto(aux.dni, 20, "\nDNI:");
+
+           Employee*pAux= persona_newPersona(5000,aux.name, aux.lastName, 6000, 0);
+           if (pAux!=NULL)
+           {
+               al_add(this, pAux);
+           }
             cleanScreen();
             break;
         case 2:
@@ -46,7 +56,7 @@ int  formato_ABM_Archivo(ArrayList this, FILE *parchivo, char textoABM[])
             do
             {
                 // el archivo lo genera, todavia no copia nada
-            opcion2=menuTipoArchivoGuardar(personas, parchivo,nombreArchivo);
+            opcion2=menuTipoArchivoGuardar(this, parchivo,nombreArchivo, this->len(this));
             } while (opcion2 !=0);
             break;
         default:
@@ -60,12 +70,12 @@ int  formato_ABM_Archivo(ArrayList this, FILE *parchivo, char textoABM[])
 
 
 
-int menuTipoArchivoGuardar ( Employee*personas , FILE* parchivo, char nombreArchivo[])
+int menuTipoArchivoGuardar ( ArrayList*this, FILE* parchivo, char nombreArchivo[], int cantidad)
 {
     int flagArchivo;
     int opcion2;
 
-    if(personas!=NULL && parchivo!=NULL)
+    if(this!=NULL && parchivo!=NULL)
     {
             printf( "\n\n\t 1- .csv\n"
                         "\t 2- .bin\n"
@@ -79,9 +89,8 @@ int menuTipoArchivoGuardar ( Employee*personas , FILE* parchivo, char nombreArch
                 {
 
                 case 1:
-                    //COPI DE ARCHIVO- paso el puntero a empleado y puntero arraylist
                     strcat(nombreArchivo, ".csv");
-                    flagArchivo=guardarEnArchivo(personas,100, parchivo,nombreArchivo);
+                    flagArchivo=guardarEnArchivo(this,cantidad, parchivo,nombreArchivo);
                     if (flagArchivo!=0)
                     {
                         printf("\n COPIA EXITOSA %d Elementos\n", flagArchivo);
@@ -92,10 +101,10 @@ int menuTipoArchivoGuardar ( Employee*personas , FILE* parchivo, char nombreArch
                     }
                     cleanScreen();
                     break;
+
                  case 4:
-                    //COPI DE ARCHIVO- paso el puntero a empleado y puntero arraylist
                     strcat(nombreArchivo, ".doc");
-                    flagArchivo=guardarEnArchivo(personas,100, parchivo,nombreArchivo);
+                    flagArchivo=guardarEnArchivo(this,cantidad, parchivo,nombreArchivo);
                     if (flagArchivo!=0)
                     {
                         printf("\n COPIA EXITOSA %d Elementos\n", flagArchivo);
@@ -106,20 +115,7 @@ int menuTipoArchivoGuardar ( Employee*personas , FILE* parchivo, char nombreArch
                     }
                     cleanScreen();
                     break;
-                case 5:
-                    //COPI DE ARCHIVO- paso el puntero a empleado y puntero arraylist
-                    strcat(nombreArchivo, ".html");
-                    flagArchivo=guardarEnArchivo(personas,100, parchivo,nombreArchivo);
-                    if (flagArchivo!=0)
-                    {
-                        printf("\n COPIA EXITOSA %d Elementos\n", flagArchivo);
-                    }
-                    else
-                    {
-                        printf("\n no se pudo copiar el archivo\n");
-                    }
-                    cleanScreen();
-                    break;
+
                 case 0:
                     opcion2=0;
                     break;

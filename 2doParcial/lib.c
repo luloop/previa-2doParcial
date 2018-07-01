@@ -70,7 +70,7 @@ float devolverPuntaje()
  * \return
  *
  */
- void ingresarTexto (char nombreArchivo[], int cantTexto, char pregunta[])
+ void ingresarTexto (char texto[], int cantTexto, char pregunta[])
 {
     char titulo [50];
     char auxtitulo [cantTexto-1];
@@ -84,7 +84,7 @@ float devolverPuntaje()
 
             auxtitulo[i]=titulo[i];
         }
-    strcpy(nombreArchivo, auxtitulo);
+    strcpy(texto, auxtitulo);
 }
 
 /** \brief FUCNION PARA ELEGIR EL GENERO
