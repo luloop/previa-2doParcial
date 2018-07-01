@@ -1,3 +1,3 @@
 
 int parserEmployee(FILE* pFile , ArrayList* pArrayListEmployee);
-int guardarEnArchivo(Employee *empleados, int cantidad, FILE *archivo);
+int guardarEnArchivo(Employee *empleados, int cantidad, FILE *archivo, char nombre[]);

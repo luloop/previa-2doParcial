@@ -1,11 +1,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <string.h>
-#include <time.h>
-
-#include "peliculas.h"
+#include "ArrayList.h"
+#include "personas.h"
+#include "archivos.h"
 #include "lib.h"
 
 
@@ -63,52 +62,6 @@ float devolverPuntaje()
 ////////////////////////////////////////
 
 
-/** \brief BUSCA EÑ PRIMER INDICE ( ESTADO CERO) DISPONIBLE
- *
- * \param ARRAY ESTRUCTURA EMOVIE
- * \param TAMANIO DEL ARRAY
- * \return
- *
- */
-int buscarLibre(EMovie peliculas[], int cantidad)
-{
-	int index=-1;
-	int i;
-	for( i=0; i < cantidad; i++)
-	   if(peliculas[i].estado==0)
-        {
-		index=i;
-		break;
-	   }
-	return index;
-}
-
-
-////////////////
-
-/** \brief CUENTA CUANTOS ELEMENTOS HAY CARGADOS
- *
- * \param ARRAY ESTRUCTURA EMOVIE
- * \param TAMANIO DEL ARRAY
- * \return
- *
- */
-int contadorArray (EMovie peliculas [], int tamanio)
-{
-    int i;
-    int contador=0;
-    for (i=0; i<tamanio; i++)
-    {
-        if ( peliculas[i].estado==1)
-        {
-            contador ++;
-        }
-    }
-
-    return contador;
-}
-///////////////////////
-
 /** \brief VALIDACION DE LA CARGA DE TITULO
  *
  * \param ARRAY ESTRUCTURA EMOVIE
@@ -117,13 +70,13 @@ int contadorArray (EMovie peliculas [], int tamanio)
  * \return
  *
  */
-void pedirTitulo (EMovie peliculas[], int posicion, int cantTexto)
+ void ingresarTexto (char nombreArchivo[], int cantTexto, char pregunta[])
 {
     char titulo [50];
-    char auxtitulo [20];
+    char auxtitulo [cantTexto-1];
     int i;
 
-    printf("\n \nIngrese El Titulo\t");
+    printf("\n \n%s\t", pregunta);
     fflush(stdin);
     gets (titulo);
         for (i=0; i<cantTexto; i++)
@@ -131,7 +84,7 @@ void pedirTitulo (EMovie peliculas[], int posicion, int cantTexto)
 
             auxtitulo[i]=titulo[i];
         }
-    strcpy(peliculas[posicion].titulo, auxtitulo);
+    strcpy(nombreArchivo, auxtitulo);
 }
 
 /** \brief FUCNION PARA ELEGIR EL GENERO
@@ -140,7 +93,7 @@ void pedirTitulo (EMovie peliculas[], int posicion, int cantTexto)
  * \param POSICION EN EL ARRAY
  * \return
  *
- */
+ *//*
 void pedirGenero (EMovie pelicula[], int i)
 {
     int auxGenero;
@@ -206,7 +159,7 @@ void pedirGenero (EMovie pelicula[], int i)
  * \param TAMAÑO DEL NOMBRE DEL ARCHIVO
  * \return
  *
- */
+ *//*
   void asignarNombrehtml (EMovie pelicula [], int j, int lenLink)
   {
       char buffer [50];
@@ -239,7 +192,7 @@ void pedirGenero (EMovie pelicula[], int i)
  * \param CANTIDAD DE LETRAS QUE TENDRA EL TEXTO
  * \return
  *
- */
+ *//*
 void pedirDescripcion(EMovie pelicula [], int j, int lenDescrip)
   {
       char buffer [1500];
@@ -268,7 +221,7 @@ void pedirDescripcion(EMovie pelicula [], int j, int lenDescrip)
  * \param CANTIDAD DE LETRAS QUE TENDRA EL LINK
  * \return
  *
- */
+ *//*
 void pedirLink(EMovie pelicula [], int j, int lenLink)
   {
       char buffer [1500];
@@ -303,8 +256,7 @@ void pedirLink(EMovie pelicula [], int j, int lenLink)
   {
     if (this==NULL)
     {
-        printf("\n NO hay memoria disponible
-                \n");
+        printf("\n NO hay memoria disponible                \n");
         return 0;
     }
     else

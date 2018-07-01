@@ -28,6 +28,7 @@ struct
     int legajo;
     int edad;
     int status;
+    int isEmpty;
 
 }typedef Employee;
 #endif // __EMPLOYEE

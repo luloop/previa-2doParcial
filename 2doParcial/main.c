@@ -3,6 +3,8 @@
 #include <string.h>
 #include "ArrayList.h"
 #include "formatos.h"
+#include "personas.h"
+#define TEXTO_ABM
 
 int main()
 {
@@ -19,7 +21,7 @@ int main()
     int flagAgregar=-1;
     int* auxiliar;
 
-    listaPersonas=al_newArrayList()//llamo al constructor
+    listaPersonas=al_newArrayList();//llamo al constructor
     if (validaArrayList(listaPersonas)==0)
         {
             return 0;
@@ -27,13 +29,9 @@ int main()
 
     do
     {
-     seguir= formato_ABM(listaPersonas, pArchivo)
+     seguir= formato_ABM_Archivo(listaPersonas, pArchivo,"data.csv");
 
-
-
-
-
-    }while (seguir!=0)
+    }while (seguir!=0);
 
 
 

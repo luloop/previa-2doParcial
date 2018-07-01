@@ -525,10 +525,6 @@ int al_sort(ArrayList* this, int (*pFunc)(void*,void*), int order)
                     {
                         if( pFunc(*(this->pElements+i), *(this->pElements+j))==-1)
                         {
-                           /* auxiliar=*(this->pElements+i);
-                            *(this->pElements+i)= *(this->pElements+j);
-                            *(this->pElements+j)=auxiliar;*/
-
                             auxiliar=al_get(this, i);
                             al_set (this, i, al_get(this, j));
                             al_set (this, j, auxiliar);

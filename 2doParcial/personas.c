@@ -55,3 +55,6 @@ Employee* newEmployee(int id, char name[],char lastName[],float salary,int secto
 
 }
 
+
+
+
