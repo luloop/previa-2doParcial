@@ -22,6 +22,7 @@ struct ArrayList{
     int size;
     void **pElements;
     int reservedSize;
+    int maxId;
 
     int     (*add)();
     int     (*len)();
@@ -39,6 +40,7 @@ struct ArrayList{
     struct ArrayList* (* clone)();
     struct ArrayList* (*subList)();
     int     (*deleteArrayList)();
+
 
 
     int     (*filter)();

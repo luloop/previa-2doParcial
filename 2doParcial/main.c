@@ -30,6 +30,7 @@ int main()
         seguir= formato_ABM_Archivo(listaPersonas);
     }
     while (seguir!=0);
+    al_deleteArrayList(listaPersonas);
     return 0;
 
 }

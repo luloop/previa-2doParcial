@@ -112,6 +112,7 @@ int  archivos_guardarTexto(ArrayList *this, char nombre[])
        aux=(Employee*) this->get(this,i);
        fprintf(archivo,"%d,%s,%s,%s\n",persona_getId(aux),persona_getNombre(aux),persona_getApellido(aux),persona_getDni(aux));
        i++;
+       //this->maxId=persona_getId(aux);//////////////
        }
         printf("\n-------------------------------\n");
         printf("\nSe guardo la informacion con exito\n");
@@ -145,6 +146,7 @@ int archivos_guardarBinario(ArrayList* pArray, char nombreArchivo[])
            pSocio=al_get(pArray,i);
            fwrite(pSocio,sizeof(Employee),1,fArchivo);
            retorno++;
+
        }
 
    }
@@ -174,8 +176,10 @@ int archivos_leer(ArrayList* pArray)
            auxSocio=persona_newUnaPersona();
            if(fread(auxSocio,sizeof(Employee),1,Socios))
            {
+
                al_add(pArray,auxSocio);
                retorno++;
+               pArray->maxId=auxSocio->id;
 
            }
        }while(!feof(Socios));
@@ -183,3 +187,74 @@ int archivos_leer(ArrayList* pArray)
    }
    return retorno;
 }
+
+/** \brief
+*
+* \param
+* \param
+* \return
+*
+*//*
+int archivos_leerMaxIdDOC(ArrayList* this)
+{
+   int retorno=-1;
+   int maximo;
+   int maxId=0;
+   int i=0;
+   char maximoId[10];
+   FILE* Socios=fopen("maxId.doc","r");
+
+   if(Socios==NULL &&this!=NULL)
+   {
+      Socios =fopen("maxId.doc","w");
+      maxId=this->len(this);
+      fprintf(Socios,"%d\n",maxId);
+   }
+
+
+   if(Socios!=NULL && this!=NULL )
+   {
+       retorno=0;
+       do{
+           fscanf(Socios,"%[^,]\n",maximoId);
+           this->maxId =atoi(maximoId);
+
+       }while(!feof(Socios));
+       fclose(Socios);
+   }
+   return retorno;
+}
+
+/** \brief
+*
+* \param
+* \param
+* \return
+*
+*//*
+int archivos_guardarMaxIdDOC(ArrayList* pArray)
+{
+   int retorno=-1;
+   int maximo;
+   int maxId=0;
+   int i=0;
+   char maximoId[10];
+   FILE* Socios;
+
+   if(Socios!=NULL && pArray!=NULL )
+   {
+      Socios =fopen("maxId.doc","w");
+      do{
+           fprintf(Socios,"%[^,]\n",pArray->maxId);
+        }while(!feof(Socios));
+   }
+
+       fclose(Socios);
+
+   return retorno;
+}
+*/
+
+
+
+

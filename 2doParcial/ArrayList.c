@@ -30,6 +30,7 @@ ArrayList* al_newArrayList(void)
         if(pElements != NULL)
         {
             this->size=0;
+            this->maxId=0;
             this->pElements=pElements;
             this->reservedSize=AL_INITIAL_VALUE;
             this->add=al_add;

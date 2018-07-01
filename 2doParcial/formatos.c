@@ -59,7 +59,7 @@ int  formato_ABM_Archivo(ArrayList *this, char textoABM[])
             cleanScreen();
             break;
         case 3: ////////////ORDENAR
-           formato_OrdenarNombre(this);
+           formato_OrdenarDNI(this);
            cleanScreen();
             break;
         case 4:
@@ -152,6 +152,7 @@ int menuTipoArchivoGuardar ( ArrayList*this)
             system ("cls");
             break;
         }
+         //archivos_guardarMaxIdDOC(this);
     }
     else
     {
@@ -277,6 +278,26 @@ void formato_OrdenarNombre(ArrayList *this)
             {
                 printf("\n-------------------------------------\n");
                 al_sort(this, persona_compareName, (ingresarInt("Que orden prefiere?\n 1- A-Z\n 0- Z-A       :", 0, 1)));
+                printf("\r\n\r\n********************************************************************\r\n");
+                printf("***********    ORDEN REALIZADO - Elementos: %d   ************\r\n",al_len(this));
+                printf("********************************************************************\r\n");
+            }
+            else
+            {
+                printf("\r\n\r\n********************************************************************\r\n");
+                printf("***********    NO HAY ELEMENTOS SUFICIENTES - Elementos: %d   ************\r\n",al_len(this));
+                printf("********************************************************************\r\n");
+            }
+}
+
+
+
+void formato_OrdenarDNI(ArrayList *this)
+{
+    if(this->len(this)>1)
+            {
+                printf("\n-------------------------------------\n");
+                al_sort(this, persona_compareDNI, (ingresarInt("Que orden prefiere?\n 1- 0-9\n 0- 9-0       :", 0, 1)));
                 printf("\r\n\r\n********************************************************************\r\n");
                 printf("***********    ORDEN REALIZADO - Elementos: %d   ************\r\n",al_len(this));
                 printf("********************************************************************\r\n");

@@ -34,6 +34,21 @@ int persona_compareName(void* pEmployeeA,void* pEmployeeB)
     return retorno;
 }
 
+int persona_compareDNI(void* pEmployeeA,void* pEmployeeB)
+{
+    int retorno=0;
+    if (strcmp(((Employee*)pEmployeeA)->dni,((Employee*)pEmployeeB)->dni)==1)
+    {
+      retorno=1;
+    }
+        if (strcmp(((Employee*)pEmployeeA)->dni,((Employee*)pEmployeeB)->dni)==-1)
+    {
+      retorno=-1;
+    }
+
+    return retorno;
+}
+
 /** \brief Set this employee the values recived as parameters
  *
  * \param pEmployee employee*
